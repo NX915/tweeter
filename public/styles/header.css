@@ -1,0 +1,27 @@
+.my-profile {
+  height: 400px;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+  background-color: #ff9100;
+  background-image: url('https://www.transparenttextures.com/patterns/ice-age.png');
+}
+
+.my-profile img {
+  width: 150px;
+}
+
+.my-profile > br {
+  display: none;
+}
+
+@keyframes bounce {
+  0% {top: 0px;}
+  10% {top: 0px}
+  50% {top: 6px;}
+  90% {top: 0px;}
+}

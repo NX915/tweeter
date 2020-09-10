@@ -1,0 +1,21 @@
+body > footer {
+  height: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 2em;
+  margin-right: 1em;
+  text-align: right;
+}
+
+body > footer svg {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(243, 62, 59);
+  border-radius: 50%;
+}
+
+body > footer svg:hover {
+  padding: 7px;
+}
