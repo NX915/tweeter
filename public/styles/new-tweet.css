@@ -38,6 +38,10 @@
   border-color: black;
 }
 
+.new-tweet textarea:hover {
+  border-color: black;
+}
+
 .new-tweet button, .new-tweet output {
   font-size: 0.8em;
   font-family: 'Bungee', sans-serif;
@@ -54,6 +58,13 @@
   background-color: #4056A1;
   color: white;
   border-style: none;
+}
+
+.new-tweet button:hover {
+  position: relative;
+  top: -3px;
+  left: -3px;
+  box-shadow: 3px 3px rgb(197, 203, 226);
 }
 
 .new-tweet output.over-limit {
