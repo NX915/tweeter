@@ -39,9 +39,14 @@ a.tweet-toggle {
 }
 
 a.tweet-toggle svg {
-  transform: rotate(180deg);
+  transition: all 0.5s;
+  /* transform: rotate(180deg); */
   width: 0.6em;
   color: rgb(243, 62, 59);
   position: relative;
   animation: bounce 2s ease-in infinite;
+}
+
+a.tweet-toggle svg.hidden {
+  transform: rotate(180deg);
 }
