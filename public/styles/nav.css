@@ -23,13 +23,13 @@ nav div.tweet-toggle {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  padding-top: 1.5em;
   height: 390px;
   font-size: 0.8em;
 }
 
 a.tweet-toggle {
   top: 0px;
+  padding-top: 1.5em;
   position: -webkit-sticky;
   position: sticky;
   display: flex;
@@ -50,4 +50,21 @@ a.tweet-toggle svg {
 
 a.tweet-toggle svg.hidden {
   transform: rotate(180deg);
+}
+
+a.tweet-toggle:hover svg {
+  width: 0.8em;
+  animation: bounce 1s ease-in infinite;
+}
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    height: 120px;
+    background-color: #4056A1;
+    position: fixed;
+  }
+
+  nav div.tweet-toggle {
+    height: 120px;
+  }
 }
