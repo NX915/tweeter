@@ -98,17 +98,17 @@ time1 = any UTC milisecond time string
 time2 = optional, any UTC milisecond time string, defaults to now
 */
 const getTimeDiffString = function(time1, time2 = Date.now()) {
-
   let output = '';
   const timeUnit = {second: 1000};
   const timeDiff = Math.abs(time1 - time2);
   let currentUnit = 'second';
+  let timeInCurrentUnit;
   timeUnit.minute = timeUnit.second * 60;
   timeUnit.hour = timeUnit.minute * 60;
-  timeUnit.day = timeUnit.hour * 60;
+  timeUnit.day = timeUnit.hour * 24;
   timeUnit.month = timeUnit.day * 30;
   timeUnit.year = timeUnit.month * 12;
-
+  
   for (const unit in timeUnit) {
     if (timeDiff / timeUnit[unit] > 1 && timeUnit[unit] > timeUnit[currentUnit]) {
       currentUnit = unit;
@@ -117,14 +117,15 @@ const getTimeDiffString = function(time1, time2 = Date.now()) {
     }
   }
 
-  output = `${Math.floor(timeDiff / timeUnit[currentUnit])} ${currentUnit}`;
+  timeInCurrentUnit = Math.floor(timeDiff / timeUnit[currentUnit]);
+  output = `${timeInCurrentUnit} ${currentUnit}`;
 
-  if (Math.floor(timeDiff / timeUnit[currentUnit]) > 1) {
+  if (timeInCurrentUnit > 1) {
     output += `s`;
   }
 
   if (currentUnit === 'year') {
-    output += ` ${getTimeDiffString(0, timeDiff - timeUnit.year)}`;
+    output += ` ${getTimeDiffString(0, timeDiff - timeUnit.year * timeInCurrentUnit)}`;
   }
 
   return output;
