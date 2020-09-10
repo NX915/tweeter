@@ -22,8 +22,9 @@ nav div.tweet-toggle {
   width: 95%;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  height: 120px;
+  align-items: flex-start;
+  padding-top: 1.5em;
+  height: 390px;
   font-size: 0.8em;
 }
 
