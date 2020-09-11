@@ -15,27 +15,49 @@ const loadTweets = function() {
       console.log('get error ', e);
     });
 };
+//show error on page or hide error if there are none
+const displayError = function(event, errText) {
+  const errorEle = $(event.target).find('.error');
+
+  if (errText === null || errText === undefined) {//hide old error
+    errorEle.slideUp();
+  } else {
+    errorEle.slideUp(() => {//first slide error msg up if one is already shown
+      errorEle.html(errText);
+      errorEle.slideDown();//slide down new error if needed
+    });
+  }
+};
 //check if user tweet is valid, if so, run callback
 const checkFormIsValid = function(event, cb) {
   const inputData = $(event.target).find('textarea').val();
-  const errorEle = $(event.target).find('.error');
-  
-  errorEle.slideUp(() => {//first slide error msg up if one is already shown
-    if (inputData === null || inputData.length === 0) {//slide down new error if needed
-      errorEle.html('⚠︎ Tweet cannot be empty! ⚠︎');
-      errorEle.slideDown();
-    } else if (inputData.length > 140) {
-      errorEle.html('⚠︎ Tweet too long! ⚠︎');
-      errorEle.slideDown();
-    } else {
-      cb();
-    }
-  });
+
+  if (inputData === null || inputData.length === 0) {//slide down new error if needed
+    displayError(event, '⚠︎ Tweet cannot be empty! ⚠︎');
+    // errorEle.slideDown();
+  } else if (inputData.length > 140) {
+    displayError(event, '⚠︎ Tweet too long! ⚠︎');
+    // errorEle.slideDown();
+  } else {
+    displayError(event);
+    cb();
+  }
+  // errorEle.slideUp(() => {//first slide error msg up if one is already shown
+  //   if (inputData === null || inputData.length === 0) {//slide down new error if needed
+  //     errorEle.html('⚠︎ Tweet cannot be empty! ⚠︎');
+  //     errorEle.slideDown();
+  //   } else if (inputData.length > 140) {
+  //     errorEle.html('⚠︎ Tweet too long! ⚠︎');
+  //     errorEle.slideDown();
+  //   } else {
+  //     cb();
+  //   }
+  // });
 };
 //send post request to server if user tweet is validated
 //the load new tweets if post request succeedes
 const newTweet = function() {
-
+  
   $(document).keydown(function(event) {
     if (event.which === 13) {
       const input = $(event.target).val();
