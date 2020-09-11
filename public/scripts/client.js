@@ -1,9 +1,4 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
+//escape string to prevent CSX attack
 const escape =  function(str) {
 
   let div = document.createElement('div');
@@ -11,7 +6,7 @@ const escape =  function(str) {
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
-
+//async call to get tweets from server
 const loadTweets = function() {
   $.ajax({url: '/tweets', method: 'get'})
     .then(function(res) {
@@ -21,14 +16,14 @@ const loadTweets = function() {
       console.log('get error ', e);
     });
 };
-
+//check if user tweet is valid, if so, run callback
 const checkFormIsValid = function(event, cb) {
 
   const inputData = $(event.target).find('textarea').val();
   const errorEle = $(event.target).find('.error');
-
-  errorEle.slideUp(() => {
-    if (inputData === null || inputData.length === 0) {
+  
+  errorEle.slideUp(() => {//first slide error msg up if one is already shown
+    if (inputData === null || inputData.length === 0) {//slide down new error if needed
       errorEle.html('⚠︎ Tweet cannot be empty! ⚠︎');
       errorEle.slideDown();
     } else if (inputData.length > 140) {
@@ -39,7 +34,8 @@ const checkFormIsValid = function(event, cb) {
     }
   });
 };
-
+//send post request to server if user tweet is validated
+//the load new tweets if post request succeedes
 const newTweet = function() {
 
   $('form').on('submit', function(event) {
@@ -60,7 +56,7 @@ const newTweet = function() {
     });
   });
 };
-
+//take tweets array from server and append them in reverse order
 const renderTweets = function(tweetArr) {
 
   $('#tweets-container').html('');
@@ -68,7 +64,7 @@ const renderTweets = function(tweetArr) {
   for (let i = tweetArr.length - 1; i >= 0; i--) {
     const $tweet = createTweetElement(tweetArr[i]);
   
-    $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+    $('#tweets-container').append($tweet);
   }
 };
 
@@ -113,7 +109,7 @@ const getTimeDiffString = function(time1, time2 = Date.now()) {
 
   return output;
 };
-
+//generate html for individual tweet element
 const createTweetElement = function(tweet) {
 
   const { user, content } = tweet;

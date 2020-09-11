@@ -1,3 +1,5 @@
+//show a shortcut to top of page if user has began scrolling down
+//will scroll page smoothly to top if user clicks on link
 $(document).ready(function() {
   $(document).on('scroll', function(event) {
     const pos = $(document).scrollTop();

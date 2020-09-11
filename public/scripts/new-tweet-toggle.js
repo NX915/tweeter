@@ -1,3 +1,4 @@
+//will toggle the new tweet form and bring the user to the form after clicking
 const newTweetToggle = function() {
   $('#tweet-toggle').on('click', function(event) {
       
