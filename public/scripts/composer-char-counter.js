@@ -16,7 +16,8 @@ $(document).ready(function() {
   $(".new-tweet form").on('input', function() {
     charCounter();
   });
-  $(".new-tweet form").on('submit', function() {
+  $("form").on('success', function(event) {
+    event.stopPropagation();
     charCounter();
   });
 });

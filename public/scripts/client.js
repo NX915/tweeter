@@ -54,6 +54,7 @@ const newTweet = function() {
         .then(function(res) {
           console.log('success ', res);
           $(inputData).val('');
+          $('form').trigger('success');
           loadTweets();
         })
         .catch(function(e) {
