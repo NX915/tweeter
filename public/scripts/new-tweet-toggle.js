@@ -9,6 +9,7 @@ const newTweetToggle = function() {
       tweetDiv.slideDown();
       tweetDiv.removeClass('hidden');
       icon.removeClass('hidden');
+      $('#tweet-text').focus();
       window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     } else {
       tweetDiv.slideUp();
