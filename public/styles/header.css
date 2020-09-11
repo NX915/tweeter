@@ -25,3 +25,11 @@
   50% {top: 6px;}
   90% {top: 0px;}
 }
+
+@media only screen and (min-width: 1024px) {
+  .my-profile {
+    width: 40%;
+    margin: 1.5rem;
+    margin-top: 4rem;
+  }
+}

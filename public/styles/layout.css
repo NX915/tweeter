@@ -30,14 +30,4 @@ body {
     display: flex;
     padding-top: 100px;
   }
-
-  .my-profile {
-    width: 40%;
-    margin: 1.5rem;
-    margin-top: 4rem;
-  }
-
-  main.container {
-    width: 50%;
-  }
 }
