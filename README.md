@@ -1,6 +1,6 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone made as part of the Lighthouse coding bootcamp. The project involved the use of HTML, CSS, JS, jQuery and AJAX front-end skills, as well as Node and Express back-end skills.
+Tweeter is a simple, responsive, single-page Twitter clone made as part of the Lighthouse coding bootcamp. The project involved the use of HTML, CSS, JS, jQuery and AJAX front-end skills, as well as Node and Express back-end skills.
 
 ## Screenshots
 
