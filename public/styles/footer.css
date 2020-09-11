@@ -14,6 +14,7 @@ body > footer svg {
   color: white;
   background-color: rgb(243, 62, 59);
   border-radius: 50%;
+  transition: all 0.2s ease-out;
 }
 
 body > footer svg:hover {
