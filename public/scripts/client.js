@@ -1,6 +1,5 @@
 //escape string to prevent CSX attack
 const escape =  function(str) {
-
   let div = document.createElement('div');
 
   div.appendChild(document.createTextNode(str));
@@ -18,7 +17,6 @@ const loadTweets = function() {
 };
 //check if user tweet is valid, if so, run callback
 const checkFormIsValid = function(event, cb) {
-
   const inputData = $(event.target).find('textarea').val();
   const errorEle = $(event.target).find('.error');
   
@@ -38,8 +36,16 @@ const checkFormIsValid = function(event, cb) {
 //the load new tweets if post request succeedes
 const newTweet = function() {
 
+  $(document).keyup(function(event) {
+    if (event.which === 13) {
+      const input = $(event.target).val();
+
+      $(event.target).val(input.substring(0, input.length - 1));
+      $('form').trigger('submit');
+    }
+  });
+
   $('form').on('submit', function(event) {
-    
     const inputData = $(event.target).find('textarea');
     
     event.preventDefault();
@@ -58,9 +64,7 @@ const newTweet = function() {
 };
 //take tweets array from server and append them in reverse order
 const renderTweets = function(tweetArr) {
-
   $('#tweets-container').html('');
-  
   for (let i = tweetArr.length - 1; i >= 0; i--) {
     const $tweet = createTweetElement(tweetArr[i]);
   
@@ -111,7 +115,6 @@ const getTimeDiffString = function(time1, time2 = Date.now()) {
 };
 //generate html for individual tweet element
 const createTweetElement = function(tweet) {
-
   const { user, content } = tweet;
 
   tweetHTML = $(`
