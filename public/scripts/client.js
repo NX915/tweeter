@@ -42,17 +42,6 @@ const checkFormIsValid = function(event, cb) {
     displayError(event);
     cb();
   }
-  // errorEle.slideUp(() => {//first slide error msg up if one is already shown
-  //   if (inputData === null || inputData.length === 0) {//slide down new error if needed
-  //     errorEle.html('⚠︎ Tweet cannot be empty! ⚠︎');
-  //     errorEle.slideDown();
-  //   } else if (inputData.length > 140) {
-  //     errorEle.html('⚠︎ Tweet too long! ⚠︎');
-  //     errorEle.slideDown();
-  //   } else {
-  //     cb();
-  //   }
-  // });
 };
 //send post request to server if user tweet is validated
 //the load new tweets if post request succeedes
@@ -81,6 +70,7 @@ const newTweet = function() {
         })
         .catch(function(e) {
           console.log('post error ', e);
+          displayError(event, '⚠︎ Sorry! Cannot contact server, try again later! ⚠︎');
         });
     });
   });
