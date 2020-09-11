@@ -84,6 +84,10 @@ main {
 }
 
 .tweet footer .icon {
+  display: none;
+}
+
+.tweet:hover footer .icon {
   display: flex;
   justify-content: space-between;
   width: 75px;
