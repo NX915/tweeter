@@ -44,13 +44,14 @@ const newTweet = function() {
 
   $('form').on('submit', function(event) {
     
-    const inputData = $(event.target).find('textarea').val();
+    const inputData = $(event.target).find('textarea');
     
     event.preventDefault();
     checkFormIsValid(event, () => {
       $.ajax({url: `${event.target.action}`, method: 'post', dataType: 'text', data: $(event.target).serialize()})
         .then(function(res) {
           console.log('success ', res);
+          $(inputData).val('');
           loadTweets();
         })
         .catch(function(e) {
