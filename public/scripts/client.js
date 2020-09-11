@@ -36,11 +36,11 @@ const checkFormIsValid = function(event, cb) {
 //the load new tweets if post request succeedes
 const newTweet = function() {
 
-  $(document).keyup(function(event) {
+  $(document).keydown(function(event) {
     if (event.which === 13) {
       const input = $(event.target).val();
-
-      $(event.target).val(input.substring(0, input.length - 1));
+      
+      event.preventDefault();
       $('form').trigger('submit');
     }
   });
